@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PEDYAM TV | الموقع الرسمي</title>
+  <meta name="description" content="PEDYAM TV - تحميل التطبيق ومتابعة الأقسام بشكل منظم." />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    :root{
+      --blue:#0000ff;
+      --green:#26ab56;
+      --bg:#ffffff;
+      --card:#ffffff;
+      --text:#111;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+    body.dark{
+      --bg:#0f1115;
+      --card:#151922;
+      --text:#f2f2f2;
+      --muted:#b7b7b7;
+      --line:#242a36;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, Arial;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .container{max-width:1000px; margin:0 auto; padding:0 14px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:var(--blue);
+      color:#fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .topbar{
+      height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none;
+    }
+    .brand img{
+      width:38px; height:38px; border-radius:12px; object-fit:cover;
+      background:#fff;
+    }
+    .brand .name{
+      font-weight:900; font-size:16px;
+      letter-spacing:.2px;
+    }
+    .actions{
+      display:flex; align-items:center; gap:8px;
+    }
+    .iconbtn{
+      width:40px; height:40px;
+      border:0; border-radius:12px;
+      background:rgba(255,255,255,.14);
+      color:#fff; cursor:pointer;
+      font-size:18px;
+    }
+    .iconbtn:active{opacity:.9}
+
+    /* Hero */
+    .hero{
+      padding:22px 0 10px;
+      background:
+        radial-gradient(1200px 400px at 20% -10%, rgba(255,255,255,.22), transparent 60%),
+        radial-gradient(900px 320px at 80% 0%, rgba(255,255,255,.16), transparent 60%),
+        var(--blue);
+      color:#fff;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:center;
+      padding:16px 0 22px;
+    }
+    @media (max-width: 820px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+      font-size:30px;
+      font-weight:1000;
+      line-height:1.2;
+    }
+    .hero p{
+      margin:0 0 14px;
+      opacity:.95;
+      font-weight:600;
+      line-height:1.8;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      text-decoration:none;
+      font-weight:900;
+      border:2px solid transparent;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn-download{
+      background:var(--green);
+      color:#fff;
+      box-shadow: var(--shadow);
+    }
+    .btn-download:hover{filter:brightness(.98)}
+    .btn-outline{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border-color: rgba(255,255,255,.35);
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:20px;
+      padding:14px;
+      backdrop-filter: blur(6px);
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+    .stat{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:16px;
+      padding:10px;
+      text-align:center;
+    }
+    .stat b{display:block; font-size:14px}
+    .stat small{opacity:.9}
+
+    /* Sections */
+    section{padding:18px 0}
+    .section-title{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin:0 0 10px;
+    }
+    .section-title h2{
+      margin:0; font-size:18px; font-weight:1000;
+    }
+    .section-title span{
+      color:var(--muted); font-weight:700; font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 520px){ .grid{grid-template-columns: 1fr;} }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px;
+      box-shadow: var(--shadow);
+    }
+    .cat{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+    }
+    .cat img{
+      width:52px; height:52px; border-radius:16px; object-fit:cover;
+      background:#eee;
+      border:1px solid var(--line);
+    }
+    .cat .t{
+      font-weight:1000;
+      margin:0;
+      color:var(--blue);
+    }
+    .cat .d{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+    }
+
+    /* Features list */
+    .features{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 720px){ .features{grid-template-columns:1fr;} }
+
+    .feat{
+      display:flex; gap:12px;
+      align-items:flex-start;
+    }
+    .feat i{
+      width:44px; height:44px;
+      border-radius:16px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(38,171,86,.12);
+      color: var(--green);
+      font-size:20px;
+      border:1px solid rgba(38,171,86,.22);
+      flex: 0 0 auto;
+    }
+    .feat b{display:block; margin-bottom:4px}
+    .feat p{margin:0; color:var(--muted); font-weight:700; line-height:1.8}
+
+    /* Footer */
+    footer{
+      padding:18px 0 26px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-weight:700;
+    }
+    .footer-row{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+    .tiny{font-size:12px}
+
+    /* Small top notice */
+    .notice{
+      margin-top:10px;
+      background: rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:16px;
+      padding:10px;
+      font-weight:700;
+      opacity:.95;
+    }
+
+    /* Smooth scroll */
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container topbar">
+    <a class="brand" href="#top">
+      <!-- غيّر شعارك -->
+      <img src="https://i.imgur.com/2yaf2wb.png" alt="logo">
+      <div class="name">PEDYAM TV</div>
+    </a>
+
+    <div class="actions">
+      <button class="iconbtn" id="darkBtn" onclick="toggleDark()" aria-label="الوضع الليلي">
+        <i class="fa fa-moon-o"></i>
+      </button>
+      <a class="iconbtn" href="#download" aria-label="التحميل" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none">
+        <i class="fa fa-download"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div id="top" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>موقع PEDYAM TV الرسمي</h1>
+      <p>
+        تحميل التطبيق بسهولة + أقسام مرتبة + تصميم سريع وخفيف على الموبايل.
+      </p>
+
+      <div class="cta" id="download">
+        <!-- ✅ ضع رابط تحميل التطبيق هنا (APK / AAB / صفحة تحميل) -->
+        <a class="btn btn-download" href="PUT_YOUR_DOWNLOAD_LINK_HERE">
+          <i class="fa fa-download"></i>
+          تحميل التطبيق
+        </a>
+
+        <!-- ✅ رابط لقناة/تيليجرام/موقعك (اختياري) -->
+        <a class="btn btn-outline" href="#sections">
+          <i class="fa fa-th-large"></i>
+          الأقسام
+        </a>
+      </div>
+
+      <div class="notice">
+        <i class="fa fa-info-circle"></i>
+        نصيحة: ضع رابط التحميل من استضافة ثابتة (مثل Google Drive/MediaFire/موقعك).
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <b style="font-size:16px">معلومات سريعة</b>
+      <div class="stats">
+        <div class="stat">
+          <b>تصميم سريع</b>
+          <small>خفيف على الهاتف</small>
+        </div>
+        <div class="stat">
+          <b>أقسام منظمة</b>
+          <small>سهولة الوصول</small>
+        </div>
+        <div class="stat">
+          <b>وضع ليلي</b>
+          <small>راحة للعين</small>
+        </div>
+        <div class="stat">
+          <b>تواصل مباشر</b>
+          <small>بالإيميل</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="sections">
+  <div class="container">
+    <div class="section-title">
+      <h2>الأقسام</h2>
+      <span>اضغط للدخول</span>
+    </div>
+
+    <div class="grid">
+      <!-- غيّر الروابط حسب صفحاتك -->
+      <div class="card">
+        <a class="cat" href="PUT_SECTION_LINK_1">
+          <img src="https://i.imgur.com/IUP1A8c.png" alt="">
+          <div>
+            <p class="t">أفلام عربية</p>
+            <p class="d">أحدث الأفلام</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="card">
+        <a class="cat" href="PUT_SECTION_LINK_2">
+          <img src="https://i.imgur.com/IUP1A8c.png" alt="">
+          <div>
+            <p class="t">أفلام أجنبية</p>
+            <p class="d">مشاهدات متنوعة</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="card">
+        <a class="cat" href="PUT_SECTION_LINK_3">
+          <img src="https://i.imgur.com/IUP1A8c.png" alt="">
+          <div>
+            <p class="t">مسلسلات</p>
+            <p class="d">مواسم وحلقات</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="card">
+        <a class="cat" href="PUT_SECTION_LINK_4">
+          <img src="https://i.imgur.com/IUP1A8c.png" alt="">
+          <div>
+            <p class="t">بث مباشر</p>
+            <p class="d">قنوات مباشرة</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="card">
+        <a class="cat" href="PUT_SECTION_LINK_5">
+          <img src="https://i.imgur.com/IUP1A8c.png" alt="">
+          <div>
+            <p class="t">جدول المباريات</p>
+            <p class="d">مواعيد ونتائج</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="card">
+        <a class="cat" href="mailto:plrolm94@gmail.com?subject=تواصل من موقع PEDYAM TV">
+          <img src="https://i.imgur.com/IUP1A8c.png" alt="">
+          <div>
+            <p class="t">تواصل معنا</p>
+            <p class="d">إرسال بريد مباشرة</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>مميزات التطبيق</h2>
+      <span>شكل جميل + تجربة أفضل</span>
+    </div>
+
+    <div class="card">
+      <div class="features">
+        <div class="feat">
+          <i class="fa fa-bolt"></i>
+          <div>
+            <b>سرعة وخفة</b>
+            <p>واجهة بسيطة وسريعة على أغلب الأجهزة.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <i class="fa fa-shield"></i>
+          <div>
+            <b>واجهة مرتبة</b>
+            <p>أقسام واضحة وزر تحميل مباشر.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <i class="fa fa-moon-o"></i>
+          <div>
+            <b>وضع ليلي</b>
+            <p>لتجربة مريحة في الليل.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <i class="fa fa-envelope"></i>
+          <div>
+            <b>تواصل سريع</b>
+            <p>راسلنا بضغطة واحدة عبر البريد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-row">
+    <div>© <span id="year"></span> PEDYAM TV</div>
+    <div class="tiny">
+      <a href="#top" style="text-decoration:none;color:inherit"><i class="fa fa-arrow-up"></i> للأعلى</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // سنة تلقائية
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // وضع ليلي مع حفظ
+  function applyDark(){
+    if(localStorage.getItem("darkMode")==="1") document.body.classList.add("dark");
+  }
+  function toggleDark(){
+    document.body.classList.toggle("dark");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "1" : "0");
+  }
+  applyDark();
+</script>
+</body>
+  </html>
